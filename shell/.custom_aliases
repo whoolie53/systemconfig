@@ -1,0 +1,17 @@
+#######################################################################
+#                           Custom Aliases                            #
+#######################################################################
+
+# --- General Aliases ---
+# If user is not root, pass commands via sudo
+if [ $UID -ne 0 ]; then
+    alias reboot='sudo reboot'
+    alias poweroff='sudo poweroff'
+fi
+
+# Get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+
+# VPN Connection Helper
+alias vpn='sh ~/.vpn/connect.sh'
