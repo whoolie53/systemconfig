@@ -119,3 +119,10 @@ else
 fi
 
 zmodload -i zsh/complist
+
+# default editor
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+
+# hide cmds from history
+export HISTCONTROL=ignorespace
