@@ -1,0 +1,112 @@
+[alias]
+	b = branch
+	c = commit -s -v
+	ca = commit -s -v --amend
+	co = checkout
+	com = !git checkout master
+	cod = !git checkout dev || git checkout development
+	d = diff
+	dn = diff --name-only
+	f = fetch
+	fa = fetch --all
+	frem = !git fetch --all && git rebase -i master
+	l = log --pretty=format:'%C(auto)%h %Cgreen %as%Creset %s %C(auto)%d'	# log really pretty one-liner
+    	g = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	grep = !git grep -n -C1
+	p = !git push origin HEAD:$(git current-branch)
+    	pf = !git push -f origin HEAD:$(git current-branch)
+	pullf = !git fetch --all && git reset --hard origin/$(git current-branch) && git pull origin $(git current-branch)
+	rem = !git rebase -i master
+	s = status --short
+	st = stash
+	stl = stash list
+	stp = stash pop
+	sts = stash save
+	
+	bd = "!bd() { git push $1 : $2 }; bd"					# delete remote:branch
+	lc = "!lc() { git log -S$1; }; lc"					# log all files that contain a pattern
+	lf = log --full-history --						# log for a specific file
+
+	current-branch = rev-parse --symbolic-full-name --abbrev-ref HEAD
+	follow = !git branch -u origin/$(git current-branch)
+	
+	alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+
+[blame]
+	coloring = highlightRecent
+	date = short
+
+[color]
+	# git output coloring
+	# allowed colors: normal, black, red, green, yellow, blue, magenta, cyan and white
+	# allowed attributes: bold, dim, ul, blink and reverse
+
+	ui = auto
+
+[color "advice"]
+	hint = yellow bold
+
+[color "blame"]
+	highlightRecent = white,12 months ago,cyan,3 months ago,green,2 weeks ago,yellow bold
+	repeatedLines = yellow bold
+
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+	upstream = red bold
+
+[color "diff"]
+	commit = cyan	
+	frag = magenta bold ul
+	func = magenta bold
+	meta = yellow bold
+	new = green bold
+	old = red bold
+	whitespace = red reverse
+
+[color "grep"]
+	filename = yellow bold
+	lineNumber = yellow
+
+[color "remote"]
+	error = red bold
+	hint = yellow bold
+	success = green bold
+	warning = orange bold
+
+[color "status"]
+	added = green bold
+	branch = yellow bold
+	changed = yellow bold
+	localBranch = green bold
+	remoteBranch = cyan bold
+	untracked = red bold
+
+[column]
+	branch = never
+
+[core]
+	editor = vim
+	quotepath = false
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol,-blank-at-eof
+	### pager = less -+FRSX -FRX        ### Make "git diff" nicer to browse
+
+[diff]
+	renames = copy 
+
+[pager]
+	color = true 
+
+[pull]
+	rebase = false
+
+[push]
+	default = upstream
+
+[status]
+	color = auto
+	renames = copy
+	showstash = true
+
+
