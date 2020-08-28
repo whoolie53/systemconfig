@@ -8,11 +8,6 @@ DOTFILES_DIR="$HOME/.cache/dotfiles"
 CUR_DATE=$(date +%Y-%m-%d)
 ZSH_CUSTOM="$HOME/.oh-my-zsh/custom"
 
-if ! type git > /dev/null; then
-    printf "[Warning] Git is not installed, please install git.\n"
-    exit 1
-fi
-
 #OS=$(lsb_release -si)
 #
 #case $OS in
@@ -25,24 +20,29 @@ fi
 #        INSTALL='apt-get install'
 #esac
 
-read -p "Choose your OS: (a)ntergos, (u)buntu, (d)ifferent? " choice
+read -p "Choose your OS: (a)rch, (u)buntu, (d)ifferent? " choice
 printf "\n"
 case $choice in
     a)
-        echo "Antergos selected."
+        echo "Arch selected."
         INSTALL='pacman -S'
         POWERLINE='powerline powerline-fonts'
         ;;
     u)
         echo "Ubuntu selected."
-        INSTALL='apt-get install'
+        INSTALL='apt install'
         POWERLINE='fonts-powerline'
         ;;
     d)
-        read -p "Please provide a package install command (e.g. apt-get install):" INSTALL
+        read -p "Please provide a package install command (e.g. apt install):" INSTALL
         printf "\n"
         ;;
 esac
+
+if ! type git > /dev/null; then
+    printf "[Warning] Git is not installed, please install git.\n"
+    exit 1
+fi
 
 echo "Install ZSH..."
 sudo "$INSTALL" zsh
