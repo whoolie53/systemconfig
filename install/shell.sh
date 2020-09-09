@@ -104,6 +104,9 @@ git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/
 echo "Install ZSH syntax highlighting plugin..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
 
+echo "Install ZSH z plugin..."
+git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
+
 echo "Copy VPN config"
 cp -f "$DOTFILES_DIR/vpn" ~/.vpn
 
