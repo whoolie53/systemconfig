@@ -91,6 +91,10 @@ echo "Copy custom aliases..."
 cp -f "$DOTFILES_DIR/shell/.custom_aliases" ~/.custom_aliases
 chmod +x ~/.custom_aliases
 
+echo "Install fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+sudo ~/.fzf/install
+
 echo "Install ZSH completions plugin..."
 git clone https://github.com/zsh-users/zsh-completions "$ZSH_CUSTOM/plugins/zsh-completions"
 
